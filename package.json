@@ -1,7 +1,7 @@
 {
   "name": "react-timeseries-charts",
   "version": "0.16.0",
-  "description": "Declarative timeseries charts",
+  "description": "Declarative timeseries charts - forked by James",
   "keywords": [
     "d3",
     "charts",
