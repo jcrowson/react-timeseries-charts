@@ -62,6 +62,7 @@ export default class EventChart extends React.Component {
     render() {
         const { series, textOffsetX, textOffsetY, hoverMarkerWidth } = this.props;
         const scale = this.props.timeScale;
+        const yScale = this.props.yScale;
         const eventMarkers = [];
 
         // Create and array of markers, one for each event
@@ -71,6 +72,9 @@ export default class EventChart extends React.Component {
             const end = event.end();
             const beginPos = scale(begin) >= 0 ? scale(begin) : 0;
             const endPos = scale(end) <= this.props.width ? scale(end) : this.props.width;
+
+            const value = event.get("impact");
+            const beginYPos = yScale(value);
 
             const transform = `translate(${beginPos},0)`;
             const isHover = this.state.hover ? Event.is(event, this.state.hover) : false;
@@ -98,11 +102,11 @@ export default class EventChart extends React.Component {
                 }
             }
 
+            const height = this.props.size;
             const x = this.props.spacing;
-            const y = 0;
+            const y = beginYPos - height / 2;
             let width = endPos - beginPos - 2 * this.props.spacing;
             width = width < 0 ? 0 : width;
-            const height = this.props.size;
 
             const eventLabelStyle = {
                 fontWeight: 100,
