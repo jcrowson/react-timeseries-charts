@@ -231,14 +231,14 @@ export default class YAxis extends React.Component {
         select(ReactDOM.findDOMNode(this))
             .select("g")
             .selectAll(".tick")
-            .select("text")
-            .styles(valueStyle);
+            .select("text");
+        // .styles(valueStyle);
 
         select(ReactDOM.findDOMNode(this))
             .select("g")
             .selectAll(".tick")
-            .select("line")
-            .styles(tickStyle);
+            .select("line");
+        // .styles(tickStyle);
 
         select(ReactDOM.findDOMNode(this))
             .select("g")
@@ -249,7 +249,7 @@ export default class YAxis extends React.Component {
             select(ReactDOM.findDOMNode(this))
                 .select("g")
                 .append("line")
-                .styles(axisStyle)
+                // .styles(axisStyle)
                 .attr("x1", 0)
                 .attr("y1", 0)
                 .attr("x2", 0)
