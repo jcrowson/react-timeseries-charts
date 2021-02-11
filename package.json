@@ -19,7 +19,7 @@
     "docs": "echo \"*** Building API docs\n\" && react-docgen src/components -x js -o src/website/packages/charts/api/docs.json --pretty",
     "lint": "eslint src/components/*.js",
     "test": "npm run lint",
-    "build": "echo \"*** Building lib\n\" && rm -rf lib/* && babel src/components --optional runtime --stage 0 --out-dir lib/components && babel src/js --optional runtime --stage 0 --out-dir lib/js && babel src/entry.js --optional runtime --stage 0 --out-file lib/entry.js",
+    "build": "rd /s /q lib && babel src/components --optional runtime --stage 0 --out-dir lib/components && babel src/js --optional runtime --stage 0 --out-dir lib/js && babel src/entry.js --optional runtime --stage 0 --out-file lib/entry.js",
     "start-website": "react-scripts start",
     "build-website": "echo \"*** Building website\n\" && rm -rf docs && react-scripts build && mv build docs",
     "precommit": "lint-staged"
@@ -35,6 +35,7 @@
     "array.prototype.fill": "^1.0.1",
     "babel-runtime": "^6.23.0",
     "colorbrewer": "^1.0.0",
+    "cross-env": "^7.0.3",
     "d3-axis": "^1.0.8",
     "d3-ease": "^1.0.3",
     "d3-format": "^1.2.0",
