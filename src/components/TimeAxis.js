@@ -194,6 +194,19 @@ export default class TimeAxis extends React.Component {
                     return "rotate(-65)";
                 });
         } else {
+            //Hotfix for bug. Original code:
+            // select(ReactDOM.findDOMNode(this)) // eslint-disable-line
+            //   .select("g")
+            //   .selectAll(".tick")
+            //   .select("text")
+            //   .styles(valueStyle);
+            const g = select(ReactDOM.findDOMNode(this)) // eslint-disable-line
+                .append("g")
+                .attr("class", "x axis")
+                .style("stroke", "none");
+            Object.entries(valueStyle).forEach(([prop, val]) => g.style(prop, val));
+            g.call(axis.tickSize(tickSize));
+
             select(ReactDOM.findDOMNode(this)) // eslint-disable-line
                 .select("g")
                 .selectAll(".tick")
