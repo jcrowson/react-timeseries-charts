@@ -348,15 +348,16 @@ export default class YAxis extends React.Component {
             .remove();
 
         // Add the new axis
+        // James - removed styles for now
         this.axis = select(ReactDOM.findDOMNode(this))
             .append("g")
             .attr("transform", `translate(${x},0)`)
             .attr("class", "yaxis")
-            .styles(valueStyle)
+            // .styles(valueStyle)
             .call(axisGenerator.tickSize(tickSize))
             .append("text")
             .text(label || this.props.label)
-            .styles(labelStyle)
+            // .styles(labelStyle)
             .attr("transform", "rotate(-90)")
             .attr("class", "yaxislabel")
             .attr("y", labelOffset)
